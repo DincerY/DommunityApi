@@ -19,5 +19,6 @@ public class DommunityDbContext : IdentityDbContext<AppUser, AppRole, int>
         builder.Entity<Community>().HasKey(o => o.Id);
 
         builder.Entity<Organization>().HasKey(o => o.Id);
+
     }
 }
