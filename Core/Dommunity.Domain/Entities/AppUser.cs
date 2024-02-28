@@ -2,7 +2,7 @@
 
 namespace Dommunity.Domain.Entities;
 
-public class AppUser : IdentityUser<string>
+public class AppUser : IdentityUser<int>
 {
     public string NameSurname { get; set; }
     public string? RefreshToken { get; set; }

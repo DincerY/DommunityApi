@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
-namespace Dommunity.Domain.Entities;
+namespace Dommunity.Domain.Entities.Base;
 
-public class AppRole : IdentityRole<int>
+public class BaseEntity
 {
-
+    public int Id { get; set; }
 }
-

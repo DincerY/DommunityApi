@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+using Dommunity.Domain.Entities.Base;
 
 namespace Dommunity.Domain.Entities;
 
-public class AppRole : IdentityRole<int>
+public class Community : BaseEntity
 {
 
-}
+    public ICollection<Organization> Organizations { get; set; }
 
+}

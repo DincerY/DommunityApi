@@ -16,10 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Dommunity.Application\Dommunity.Application.csproj" />
     <ProjectReference Include="..\..\Core\Dommunity.Domain\Dommunity.Domain.csproj" />
   </ItemGroup>
 
