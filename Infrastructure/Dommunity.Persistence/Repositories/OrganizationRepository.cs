@@ -23,9 +23,15 @@ public class OrganizationRepository : IOrganizationRepository
 
     public DbSet<Organization> Table => _context.Set<Organization>();
 
-    public IQueryable<Organization> GetAll()
+    public IQueryable<Organization> GetAll(bool changeTracking = true)
     {
-        return Table.AsQueryable();
+        var queryable = Table.AsQueryable();
+        if (!changeTracking)
+        {
+            queryable.AsNoTracking();
+        }
+
+        return queryable;
     }
 
     public IQueryable<Organization> GetWhere(Expression<Func<Organization, bool>> method)

@@ -12,57 +12,56 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Dommunity.Persistence.Repositories;
 
-public class CommunityRepository : ICommunityRepository
+public class UserRepository : IUserRepository
 {
     private readonly DommunityDbContext _context;
 
-    public CommunityRepository(DommunityDbContext context)
+    public UserRepository(DommunityDbContext context)
     {
         _context = context;
     }
 
-    public DbSet<Community> Table => _context.Set<Community>();
-    public IQueryable<Community> GetAll(bool changeTracking = true)
+    public DbSet<User> Table => _context.Set<User>();
+    public IQueryable<User> GetAll(bool changeTracking = true)
     {
         var queryable = Table.AsQueryable();
         if (!changeTracking)
         {
             queryable.AsNoTracking();
         }
-
         return queryable;
     }
 
-    public IQueryable<Community> GetWhere(Expression<Func<Community, bool>> method)
+    public IQueryable<User> GetWhere(Expression<Func<User, bool>> method)
     {
         return Table.AsQueryable().Where(method);
     }
 
-    public async Task<Community> GetSingleAsync(Expression<Func<Community, bool>> method)
+    public async Task<User> GetSingleAsync(Expression<Func<User, bool>> method)
     {
         return await Table.SingleOrDefaultAsync(method);
     }
 
-    public async Task<Community> GetByIdAsync(int id)
+    public async Task<User> GetByIdAsync(int id)
     {
-        return await Table.FirstOrDefaultAsync(o => o.Id == id);
+        return await Table.FirstOrDefaultAsync(u => u.Id == id);
     }
 
-    public async Task<bool> AddAsync(Community model)
+    public async Task<bool> AddAsync(User model)
     {
-        EntityEntry<Community> entityEntry = await Table.AddAsync(model);
+        EntityEntry<User> entityEntry = await Table.AddAsync(model);
         return entityEntry.State == EntityState.Added;
     }
 
-    public bool Remove(Community model)
+    public bool Remove(User model)
     {
-        EntityEntry<Community> entityEntry = Table.Remove(model);
+        EntityEntry<User> entityEntry = Table.Remove(model);
         return entityEntry.State == EntityState.Deleted;
     }
 
-    public bool Update(Community model)
+    public bool Update(User model)
     {
-        EntityEntry<Community> entityEntry = Table.Update(model);
+        EntityEntry<User> entityEntry = Table.Update(model);
         return entityEntry.State == EntityState.Modified;
     }
 

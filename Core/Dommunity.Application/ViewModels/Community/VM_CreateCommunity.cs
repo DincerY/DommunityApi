@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dommunity.Domain.Entities.Base;
 
-namespace Dommunity.Domain.Entities;
+namespace Dommunity.Application.ViewModels.Community;
 
-public class Community : BaseEntity
+public class VM_CreateCommunity
 {
     public string Name { get; set; }
     public string WorksCommunity { get; set; }
     public string Region { get; set; }
-    public ICollection<Organization> Organizations { get; set; }
-
 }

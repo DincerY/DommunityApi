@@ -1,4 +1,11 @@
+using Dommunity.Application.Repositories;
+using Dommunity.Application.Services.Persistence;
 using Dommunity.Domain.Entities;
+using Dommunity.Persistence.Contexts;
+using Dommunity.Persistence.Repositories;
+using Dommunity.Persistence.Services;
+using RabbitMQ.Client;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +16,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Bu kýsýma yarýn bakalým
-//builder.Services.AddDefaultIdentity<AppUser>();
+builder.Services.AddDbContext<DommunityDbContext>();
+
+builder.Services.AddScoped<IAuthService,AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IOrganizationService, OrganizationService>();
+builder.Services.AddScoped<ICommunityService, CommunityService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICommunityRepository, CommunityRepository>();
+builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+builder.Services.AddScoped<ConnectionFactory>();
+
+
 
 var app = builder.Build();
 

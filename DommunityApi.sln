@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{8C7C95B2-7E33-4C9F-9B49-95EA295BC998}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dommunity.WebApi", "Presentation\Dommunity.WebApi\Dommunity.WebApi.csproj", "{D835A4BA-5053-436F-9330-47A20597ED77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dommunity.WebApi", "Presentation\Dommunity.WebApi\Dommunity.WebApi.csproj", "{D835A4BA-5053-436F-9330-47A20597ED77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dommunity.Application", "Core\Dommunity.Application\Dommunity.Application.csproj", "{BD3EA572-817E-4ED9-B00C-4B00970DED65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dommunity.Application", "Core\Dommunity.Application\Dommunity.Application.csproj", "{BD3EA572-817E-4ED9-B00C-4B00970DED65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dommunity.Domain", "Core\Dommunity.Domain\Dommunity.Domain.csproj", "{439175EC-477F-4F3A-8DB4-342E8FBE3C8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dommunity.Domain", "Core\Dommunity.Domain\Dommunity.Domain.csproj", "{439175EC-477F-4F3A-8DB4-342E8FBE3C8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dommunity.Infrastructure", "Infrastructure\Dommunity.Infrastructure\Dommunity.Infrastructure.csproj", "{C25697BD-F5CC-465F-9833-90482FA684F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dommunity.Infrastructure", "Infrastructure\Dommunity.Infrastructure\Dommunity.Infrastructure.csproj", "{C25697BD-F5CC-465F-9833-90482FA684F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dommunity.Persistence", "Infrastructure\Dommunity.Persistence\Dommunity.Persistence.csproj", "{C02C36D3-7689-4CA6-9A61-C2292529CC4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dommunity.Persistence", "Infrastructure\Dommunity.Persistence\Dommunity.Persistence.csproj", "{C02C36D3-7689-4CA6-9A61-C2292529CC4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationConsole", "NotificationConsole\NotificationConsole.csproj", "{BE370D7D-A455-4C8F-B854-2C38750DA2DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C02C36D3-7689-4CA6-9A61-C2292529CC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C02C36D3-7689-4CA6-9A61-C2292529CC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C02C36D3-7689-4CA6-9A61-C2292529CC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE370D7D-A455-4C8F-B854-2C38750DA2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE370D7D-A455-4C8F-B854-2C38750DA2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE370D7D-A455-4C8F-B854-2C38750DA2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE370D7D-A455-4C8F-B854-2C38750DA2DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
