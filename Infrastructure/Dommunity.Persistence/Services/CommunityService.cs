@@ -1,9 +1,4 @@
 ﻿using Dommunity.Application.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dommunity.Application.Services.Persistence;
 using Dommunity.Domain.Entities;
 
@@ -16,6 +11,21 @@ public class CommunityService : ICommunityService
     public CommunityService(ICommunityRepository communityRepository)
     {
         _communityRepository = communityRepository;
+    }
+
+
+    public async Task<Community> GetCommunityByIdAsync(int id)
+    {
+        if (id < 0)
+        {
+            throw new Exception("Id değeri 0 dan küçük olamaz");
+        }
+        var result = await _communityRepository.GetSingleAsync(c => c.Id == id);
+        if (result == null)
+        {
+            throw new ArgumentNullException("Bu kimlik değerinde bir topluluk bulunamadı");
+        }
+        return result;
     }
 
     public async Task<bool> CreateCommunity(Community community)

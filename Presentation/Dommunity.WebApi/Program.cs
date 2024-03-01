@@ -1,6 +1,7 @@
 using Dommunity.Application.Repositories;
+using Dommunity.Application.Services.Infrastructure;
 using Dommunity.Application.Services.Persistence;
-using Dommunity.Domain.Entities;
+using Dommunity.Infrastructure.Services;
 using Dommunity.Persistence.Contexts;
 using Dommunity.Persistence.Repositories;
 using Dommunity.Persistence.Services;
@@ -18,15 +19,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DommunityDbContext>();
 
+builder.Services.AddSingleton<ConnectionFactory>();
+
 builder.Services.AddScoped<IAuthService,AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 builder.Services.AddScoped<ICommunityService, CommunityService>();
+builder.Services.AddSingleton<IRabbitMQService, RabbitMQService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICommunityRepository, CommunityRepository>();
 builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
-builder.Services.AddScoped<ConnectionFactory>();
+
 
 
 

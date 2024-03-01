@@ -4,6 +4,8 @@ using Dommunity.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using RabbitMQ.Client;
 using System.Text;
+using Dommunity.Application.Services.Infrastructure;
+using Newtonsoft.Json;
 
 namespace Dommunity.WebApi.Controllers;
 
@@ -13,18 +15,16 @@ public class CommunitiesController : ControllerBase
 {
     private readonly IOrganizationService _organizationService;
     private readonly ICommunityService _communityService;
-    private readonly ConnectionFactory _connectionFactory;
-    private readonly IConnection connection;
-    private readonly IModel channel;
+    private readonly IRabbitMQService _rabbitMQService;
 
-    public CommunitiesController(ConnectionFactory connectionFactory, IOrganizationService organizationService, ICommunityService communityService)
+    public CommunitiesController(ConnectionFactory connectionFactory, IOrganizationService organizationService, ICommunityService communityService, IRabbitMQService rabbitMqService)
     {
-        _connectionFactory = connectionFactory;
         _organizationService = organizationService;
         _communityService = communityService;
-        connection = connectionFactory.CreateConnection();
-        channel = connection.CreateModel();
-    } 
+        _rabbitMQService = rabbitMqService;
+    }
+
+    
 
     [HttpPost]
     [Route("add-community")]
@@ -56,12 +56,15 @@ public class CommunitiesController : ControllerBase
         var org = await _organizationService.GetOrganizationByIdAsync(organizationId);
         var exhangeName = org.Title.Replace(' ', '-');
 
-        channel.ExchangeDeclare(exhangeName, ExchangeType.Fanout);
+
+        _rabbitMQService.ExchangeDeclare(exhangeName);
+
 
         var message = $"{org.Title} başlıklı {org.OrganizationTime} tarihli organizyon başlamıştır";
         var body = Encoding.UTF8.GetBytes(message);
 
-        channel.BasicPublish(exhangeName,routingKey:string.Empty,body:body);
+        _rabbitMQService.BasicPublish(exhangeName,body);
+
         return Ok("Organizasyon işlemi başlatıldı");
     }
 }

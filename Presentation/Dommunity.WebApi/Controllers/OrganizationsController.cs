@@ -2,9 +2,8 @@
 using Dommunity.Application.ViewModels.Organization;
 using Dommunity.Domain.Entities;
 using Dommunity.Persistence.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Dommunity.WebApi.Controllers;
 
@@ -17,6 +16,15 @@ public class OrganizationsController : ControllerBase
     public OrganizationsController(IOrganizationService organizationService)
     {
         _organizationService = organizationService;
+    }
+
+    
+
+    [HttpGet]
+    [Route("get-all-organization")]
+    public async Task<IActionResult> GetCommunityOrganizations(int communityId)
+    {
+        return Ok();
     }
 
     [HttpPost]

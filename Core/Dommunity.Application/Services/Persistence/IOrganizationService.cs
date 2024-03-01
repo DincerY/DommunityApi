@@ -9,6 +9,8 @@ namespace Dommunity.Application.Services.Persistence;
 
 public interface IOrganizationService
 {
+    Task<List<Organization>> GetCommunityOrganizationsAsync();
+    Task<List<Organization>> GetAll();
     Task<Organization> GetOrganizationByIdAsync(int id);
     Task<bool> CreateOrganizationAsync(Organization organization);
 }

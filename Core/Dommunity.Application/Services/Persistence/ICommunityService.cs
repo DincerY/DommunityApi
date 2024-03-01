@@ -9,5 +9,6 @@ namespace Dommunity.Application.Services.Persistence;
 
 public interface ICommunityService
 {
+    Task<Community> GetCommunityByIdAsync(int id);
     Task<bool> CreateCommunity(Community community);
 }

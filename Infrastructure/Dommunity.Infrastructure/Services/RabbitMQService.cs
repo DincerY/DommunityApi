@@ -25,13 +25,26 @@ public class RabbitMQService : IRabbitMQService
     {
         return channel.QueueDeclare().QueueName;
     }
-    public string QueueDeclare(string queueName)
+    public void QueueDeclare(string queueName)
     {
-        return "";
+        channel.QueueDeclare(
+            queue : queueName,
+            durable: true,
+            exclusive: false,
+            autoDelete: false,
+            arguments: null);
     }
 
-    public void QueueBind(string queueName,string exhange, string routingKey)
+    public void QueueBind(string exchangeName, string queueName, string bindingKey = "")
     {
+        channel.QueueBind(
+            queue:queueName,
+            exchange:exchangeName,
+            routingKey: bindingKey);
     }
 
-}
+    public void BasicPublish(string exhangeName, byte[] body, string routingKey = "")
+    {
+        channel.BasicPublish(exhangeName,routingKey,body:body);
+    }
+}   

@@ -1,6 +1,7 @@
 ﻿using Dommunity.Application.Repositories;
 using Dommunity.Application.Services.Persistence;
 using Dommunity.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dommunity.Persistence.Services;
 
@@ -13,6 +14,18 @@ public class OrganizationService : IOrganizationService
         _organizationRepository = organizationRepository;
     }
 
+
+    public Task<List<Organization>> GetCommunityOrganizationsAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<List<Organization>> GetAll()
+    {
+        return await _organizationRepository.GetAll().ToListAsync();
+    }
+
+  
 
     public async Task<Organization> GetOrganizationByIdAsync(int id)
     {
