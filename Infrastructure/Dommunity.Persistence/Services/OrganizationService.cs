@@ -1,4 +1,6 @@
-﻿using Dommunity.Application.Repositories;
+﻿using Core.CrossCuttingConcerns.Exceptions;
+using Dommunity.Application.DTOs;
+using Dommunity.Application.Repositories;
 using Dommunity.Application.Services.Persistence;
 using Dommunity.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +17,20 @@ public class OrganizationService : IOrganizationService
     }
 
 
-    public Task<List<Organization>> GetCommunityOrganizationsAsync()
+    public async Task<List<GetOrganizationDto>> GetCommunityOrganizationsAsync(int communityId)
     {
-        throw new NotImplementedException();
+        var result = await _organizationRepository.Table.Where(o => o.CommunityId == communityId).Select(o => new GetOrganizationDto()
+        {
+            Id = o.Id,
+            Content = o.Content,
+            OrganizationTime = o.OrganizationTime,
+            Title = o.Title
+        }).ToListAsync();
+        if (result == null || result.Count == 0)
+        {
+            throw new BusinessException("Topluluk kimliğine ait bir organizasyon bulunmadı");
+        }
+        return result;
     }
 
     public async Task<List<Organization>> GetAll()

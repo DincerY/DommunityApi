@@ -1,3 +1,5 @@
+using Core.CrossCuttingConcerns;
+using Core.CrossCuttingConcerns.Exceptions;
 using Dommunity.Application.Repositories;
 using Dommunity.Application.Services.Infrastructure;
 using Dommunity.Application.Services.Persistence;
@@ -48,5 +50,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseMiddleware<ExceptionMiddleware>();
+    app.UseMiddleware<DenemeMiddleware>();
+}
 
 app.Run();

@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\Core\Dommunity.Domain\Dommunity.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Dommunity.Infrastructure\Dommunity.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Dommunity.Persistence\Dommunity.Persistence.csproj" />

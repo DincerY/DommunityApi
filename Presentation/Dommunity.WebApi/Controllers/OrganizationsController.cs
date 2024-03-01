@@ -1,4 +1,5 @@
-﻿using Dommunity.Application.Services.Persistence;
+﻿using Dommunity.Application.DTOs;
+using Dommunity.Application.Services.Persistence;
 using Dommunity.Application.ViewModels.Organization;
 using Dommunity.Domain.Entities;
 using Dommunity.Persistence.Services;
@@ -21,10 +22,11 @@ public class OrganizationsController : ControllerBase
     
 
     [HttpGet]
-    [Route("get-all-organization")]
-    public async Task<IActionResult> GetCommunityOrganizations(int communityId)
+    [Route("get-community-organizations")]
+    public async Task<List<GetOrganizationDto>> GetCommunityOrganizations(int communityId)
     {
-        return Ok();
+        var result = await _organizationService.GetCommunityOrganizationsAsync(communityId);
+        return result;
     }
 
     [HttpPost]
