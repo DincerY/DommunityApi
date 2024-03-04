@@ -35,7 +35,6 @@ builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
 
 
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,16 +44,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseMiddleware<ExceptionMiddleware>();
+}
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseMiddleware<ExceptionMiddleware>();
-    app.UseMiddleware<DenemeMiddleware>();
-}
 
 app.Run();
+
+

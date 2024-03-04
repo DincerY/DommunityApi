@@ -6,8 +6,6 @@ Authorization authorization = new(exception.Calistir);
 
 authorization.Calistir();
 
-Deneme deneme = DelegateDeneme.DelegatedMethod;
-deneme.Invoke();
 
 
 class Authorization
@@ -62,13 +60,3 @@ class Logging
     }
 
 }
-
-public static class DelegateDeneme
-{
-    public static void DelegatedMethod()
-    {
-
-    }
-}
-
-delegate void Deneme();
